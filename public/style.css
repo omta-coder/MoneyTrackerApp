@@ -31,3 +31,19 @@ h1,h2{
     border-radius: 4px;
     cursor: pointer;
 }
+.expenses-list{
+    margin: 20px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;;
+}
+th{
+    background-color: rgb(246, 75, 28);
+    color:rgb(253, 253, 250)
+}
