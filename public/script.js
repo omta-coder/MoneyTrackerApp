@@ -30,4 +30,41 @@ addBtn.addEventListener('click',function(){
         alert('please select a date');
         return;
     }
+    expenses.push({category,info,amount,date});
+    if(category === 'Income'){
+       totalAmount += amount;   
+    }
+    if(category === 'Expense'){
+      totalAmount -= amount;    
+    }
+    totalAmountCell.textContent = totalAmount;
+    const newRow = expenseTableBody.inertRow();
+
+    const categoryCell = newRow.insertCell();
+    const AmountCell = newRow.insertCell();
+    const InfoCell = newRow.insertCell();
+    const dateCell = newRow.insertCell();
+    const deleteCell = newRow.insertCell();
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent ='Delete';
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.addEventListener('click', function(){
+       expenses.splice(expenses.indexOf(expense),1);
+       if(category === 'Income'){
+           totalAmount-=amount;
+       }
+       if(category === 'Expense'){
+           totalAmount+=amount;
+       }
+
+       totalAmountCell.textContent=totalAmount;
+       expenseTableBody.removeChild(newRow)
+    })
+    const expense = expenses[expenses.length-1];
+    categoryCell.textContent=expense.category;
+    AmountCell.textContent=expense.amount;
+    InfoCell.textContent=expense.info;
+    dateCell.textContent=expense.date;
+    deleteCell.appendChild(deleteBtn);
 })
